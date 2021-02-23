@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Paddle/Paddle.gd" type="Script" id=1]
 [ext_resource path="res://Ball/Ball_Container.gd" type="Script" id=2]
@@ -6,10 +6,29 @@
 [ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Walls/Walls.gd" type="Script" id=5]
 [ext_resource path="res://Background/Background.gd" type="Script" id=6]
+[ext_resource path="res://Assets/confetti.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Datalegreya-Thin.otf" type="DynamicFontData" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50, 10 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.974684, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 229.89
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.0
+scale_random = 0.21
+scale_curve = SubResource( 4 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 36
@@ -58,6 +77,14 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle_Container/Paddle"]
 position = Vector2( 0, 10 )
 shape = SubResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="Paddle_Container/Paddle"]
+emitting = false
+amount = 6
+lifetime = 0.4
+one_shot = true
+process_material = SubResource( 5 )
+texture = ExtResource( 7 )
 
 [node name="Ball_Container" type="Node2D" parent="."]
 script = ExtResource( 2 )

@@ -4,7 +4,7 @@ export var max_speed = 400.0
 export var min_speed = 100.0
 onready var HUD = get_node("/root/Game/HUD")
 
-var color = Color(1,1,1,1)
+var color = Color("22b8cf")
 
 func _ready():
 	HUD.connect("changed",self,"_on_HUD_changed")

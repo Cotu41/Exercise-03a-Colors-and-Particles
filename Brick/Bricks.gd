@@ -8,6 +8,8 @@ export var H = 7
 export var top_margin = 100
 export var margin = 3
 
+var colors = [ Color("e03131"), Color("fd7e14"), Color("ffe066"), Color("c0eb75"), Color("228be6"), Color("845ef7"), Color("be4bdb") ]
+
 var B = Vector2(90,30)
 
 
@@ -27,3 +29,7 @@ func start_bricks():
 			brick.col = w
 			add_child(brick)
 			brick.start_brick()
+
+
+		
+		

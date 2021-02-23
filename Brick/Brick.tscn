@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Brick/Brick.gd" type="Script" id=1]
+[ext_resource path="res://Assets/smoke0.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 45, 15 )
@@ -20,3 +21,10 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 45, 15 )
 shape = SubResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+emitting = false
+amount = 5
+lifetime = 0.4
+one_shot = true
+texture = ExtResource( 2 )

@@ -11,9 +11,8 @@ export var fall_speed = 1.0
 
 var dying = false
 
-var colors = [
-	Color(1,1,1,1)
-]
+var colors = [ Color("e03131"), Color("fd7e14"), Color("ffe066"), Color("c0eb75"), Color("228be6"), Color("845ef7"), Color("be4bdb") ]
+
 onready var textures = [
 	load("res://Assets/smoke0.png")
 	,load("res://Assets/smoke1.png")
@@ -47,7 +46,19 @@ func die():
 
 
 func update_color():
-	pass
+	if HUD.color_blocks:
+		if row >= 0 and row < colors.size():
+			$Color.color = colors[row]
+	else:
+		$Color.color = Color(1,1,1,1)
+	
+	if HUD.particle_ball:
+		$Particles2D.emitting = true
+	else:
+		$Particles2D.emitting = false
 
 func emit_particle(pos):
-	pass
+	if HUD.particle_blocks:
+		$Particles2D.texture = textures[randi() % textures.size()]
+		$Particles2D.emitting = true
+		$Particles2D.global_position = pos
